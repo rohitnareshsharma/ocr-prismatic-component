@@ -2,11 +2,11 @@ import { action, component, input } from "@prismatic-io/spectral";
 import axios from "axios";
 
 
-const smartUIForm = action({
+const ocrAction = action({
   // This is what the action should look like in the integration designer
   display: {
-    label: "SmartUI Form",
-    description: "Expects users to fill a form asynchronously",
+    label: "OCR",
+    description: "Expects users to complete document scanning",
   },
   // This action should have these inputs
   inputs: {
@@ -45,7 +45,7 @@ const smartUIForm = action({
 });
 
 async function getResults(key:String) {
-  const url = `https://kvdb.io/7hWSiammtFLGCyKLe2iEs7/${key}`; // Replace with your API endpoint
+  const url = `https://kvdb.io/7hWSiammtFLGCyKLe2iEs7/OCR-${key}`; // Replace with your API endpoint
   const customHeader = 'Bearer 4cfe3342-1641-4e40-8646-85ada267c5de'; // Replace with your desired header value
 
   try {
@@ -68,13 +68,13 @@ function sleep(ms:number) {
 }
 
 export default component({
-  key: "smartuiComponent",
+  key: "ocrComponent",
   public: false,
   display: {
-    label: "Smart UI Form",
-    description: "A component representing the initial data capture screens of one sdk",
+    label: "OCR",
+    description: "A component representing scanning of document through one sdk",
     iconPath: "icon.png",
     category: "UI"
   },
-  actions: { smartUIForm }
+  actions: { ocrAction }
 });
