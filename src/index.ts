@@ -22,10 +22,10 @@ const ocrAction = action({
     context.logger.info("Execution Id is :", executionId);
     let resultString;
  
-    context.logger.info("Awaiting for results");
+    context.logger.info("Awaiting for results for OCR component");
     // Lets runs a loop
-    for(let i = 0; i<30; i++) {
-      await sleep(10000);
+    for(let i = 0; i<100; i++) {
+      await sleep(3000);
       resultString = await getResults(executionId);
       if(resultString) {
         break;
